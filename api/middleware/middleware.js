@@ -1,7 +1,8 @@
 function logger(req, res, next) {
   console.log(
-    `${req.method} was made at ${req.originalUrl} at find time key ${req}  `
+    `${req.method} was made at ${req.originalUrl} at find time key ${req.header.Date}`
   );
+  next();
 }
 
 function validateUserId(req, res, next) {
@@ -18,4 +19,7 @@ function validatePost(req, res, next) {
 
 module.exports = {
   logger,
+  validateUserId,
+  validateUser,
+  validatePost,
 };
