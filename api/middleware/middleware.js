@@ -31,7 +31,12 @@ function validateUser(req, res, next) {
 }
 
 function validatePost(req, res, next) {
-  // DO YOUR MAGIC
+  const { text } = req.body;
+  if (!text || typeof text !== "string" || !text.trim()) {
+    next({ status: 400, message: "missing required text field" });
+  } else {
+    next();
+  }
 }
 
 module.exports = {
